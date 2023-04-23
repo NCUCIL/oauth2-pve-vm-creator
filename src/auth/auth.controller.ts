@@ -1,6 +1,7 @@
 import { Controller, Get, Res, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
+import { Response } from 'express';
 
 
 @Controller('auth')
@@ -9,13 +10,13 @@ export class AuthController {
 
   @Get('login')
   @UseGuards(AuthGuard('oauth2'))
-  login() {
-    return;
+  async login(@Res() res: Response) {
+    res.redirect('/');
   }
 
   @Get('callback')
   @UseGuards(AuthGuard('oauth2'))
-  redirect(@Res() res: Response) {
-    console.log(res);
+  async redirect(@Res() res: Response) {
+    res.send(200);
   }
 }

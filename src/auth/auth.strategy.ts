@@ -1,5 +1,5 @@
 import { PassportStrategy } from "@nestjs/passport";
-import { Res, BadRequestException,Injectable } from '@nestjs/common';
+import { Res,BadRequestException,Injectable } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 import { Strategy, VerifyCallback } from 'passport-oauth2';
 import { HttpService } from '@nestjs/axios';
@@ -57,7 +57,7 @@ export class PortalStrategy extends PassportStrategy(Strategy, 'oauth2'){
           //   );
           // }
           // return user;
-          return 200;
+          res.send(200)
         }
 
 }

@@ -4,8 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import e from 'express';
-import { User } from './user/entities/user.entity';
+import { User } from './user/user.entity';
 import { UserModule } from './user/user.module';
 import { PassportModule } from '@nestjs/passport';
 
@@ -20,7 +19,7 @@ if (process.env.ENVIROMENT='PRODUCTION'){
 
 @Module({
   imports: [AuthModule,
-    ConfigModule.forRoot({ envFilePath: '.env.development' }),
+    ConfigModule.forRoot({ envFilePath: '.env.development', isGlobal: true }),
     PassportModule.register({ session: true }),
     TypeOrmModule.forRoot({
     type: 'mysql',

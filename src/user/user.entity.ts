@@ -16,4 +16,10 @@ export class User{
 
     @Column({ name: 'vm_id' })
     vm_id: Number;
+
+    @Column({ name: 'created_at' })
+    created_at: Date;
+
+    @Column({ name: 'updated_at' })
+    updated_at: Date;
 }

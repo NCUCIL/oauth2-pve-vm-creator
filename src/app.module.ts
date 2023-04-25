@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { UserModule } from './user/user.module';
 import { PassportModule } from '@nestjs/passport';
+import { PveModule } from './pve/pve.module';
 
 let envFilePath = '.env.development';
 console.log(`Running in ${process.env.ENVIROMENT}`)
@@ -32,7 +33,8 @@ if (process.env.ENVIROMENT='PRODUCTION'){
     synchronize: true,
     autoLoadEntities: true,
   }),
-    UserModule],
+    UserModule,
+    PveModule],
   controllers: [AppController],
   providers: [AppService],
 })

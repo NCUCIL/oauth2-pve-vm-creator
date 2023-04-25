@@ -1,18 +1,20 @@
 import { Module } from '@nestjs/common';
+import { UserModule } from '../user/user.module';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { PassportModule } from '@nestjs/passport';
 import { HttpModule } from '@nestjs/axios';
-import { PortalStrategy } from './auth.strategy';
+import { OAuth2Strategy } from './oauth2.strategy';
 import { SessionSerializer } from './session.serializer';
 
 @Module({
   controllers: [AuthController],
-  imports: [ 
+  imports: [
+    UserModule, 
     PassportModule.register({ session: true }),
     HttpModule],
   providers: [
-    AuthService, PortalStrategy,SessionSerializer
+    AuthService, OAuth2Strategy ,SessionSerializer
   ]
 })
 export class AuthModule {}

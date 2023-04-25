@@ -30,6 +30,7 @@ if (process.env.ENVIROMENT='PRODUCTION'){
     database: process.env.MYSQL_DB_NAME,
     entities: [User],
     synchronize: true,
+    autoLoadEntities: true,
   }),
     UserModule],
   controllers: [AppController],

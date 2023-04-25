@@ -1,25 +1,28 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity({ name: 'users' })
 export class User{
     @PrimaryGeneratedColumn()
-    id:Number;
+    id: number;
     
+    @Column({ name: 'identifier' })
+    identifier: string
+
     @Column({ name: 'student_id' })
     student_id: string;
 
     @Column({name: 'email'})
     email: string;
 
-    @Column({ name: 'allocated_ip' })
+    @Column({ name: 'allocated_ip', nullable: true})
     allocated_ip: string;
 
-    @Column({ name: 'vm_id' })
-    vm_id: Number;
+    @Column({ name: 'vm_id',nullable: true })
+    vm_id: number;
 
-    @Column({ name: 'created_at' })
-    created_at: Date;
+    @CreateDateColumn()
+    createdAt: Date;
 
-    @Column({ name: 'updated_at' })
-    updated_at: Date;
+    @UpdateDateColumn()
+    updatedAt: Date;
 }

@@ -5,7 +5,7 @@ declare namespace NodeJS{
         MYSQL_DB_USER: string;
         MYSQL_DB_PASS: string;
         MYSQL_DB_NMAE: string;
-        PORT?: string
+        PORT: string
         ENVIROMENT : Enviroment;
         PORTAL_OAUTH_ID: string
         PORTAL_OAUTH_SECRET: string

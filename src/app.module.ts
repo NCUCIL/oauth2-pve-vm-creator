@@ -4,10 +4,11 @@ import { ConfigModule } from '@nestjs/config';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user/user.entity';
+import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
 import { PassportModule } from '@nestjs/passport';
-import { PveModule } from './pve/pve.module';
+import { IpModule } from './ip/ip.module';
+import { VmModule } from './vm/vm.module';
 
 let envFilePath = '.env.development';
 console.log(`Running in ${process.env.ENVIROMENT}`)
@@ -34,7 +35,8 @@ if (process.env.ENVIROMENT='PRODUCTION'){
     autoLoadEntities: true,
   }),
     UserModule,
-    PveModule],
+    IpModule,
+    VmModule],
   controllers: [AppController],
   providers: [AppService],
 })

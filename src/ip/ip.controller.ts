@@ -18,8 +18,8 @@ export class IpController {
   }
 
   @Get(':id')
-  getUserIp(@Param('id') id: string) {
-    return this.ipService.getUserIp(+id);
+  allowcateUserIp(@Param('id') id: string) {
+    return this.ipService.allowcateUserIP(+id);
   }
 
   @Delete(':id')

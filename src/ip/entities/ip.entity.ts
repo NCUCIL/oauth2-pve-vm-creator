@@ -6,8 +6,11 @@ export class Ip{
     id: number;
     
     @Column({ name: 'vm_id' })
-    vm_id: string
+    vm_id: number
 
+    @Column({ name: 'ip_address' })
+    ip_address: string
+    
     @CreateDateColumn()
     createdAt: Date;
 

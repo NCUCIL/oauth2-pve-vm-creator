@@ -12,7 +12,7 @@ export class IpService {
     return `This action returns all ip`;
   }
 
-  findOne(id: number) {
+  getUserIp(id: number) {
     return `This action returns a #${id} ip`;
   }
 

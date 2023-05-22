@@ -18,13 +18,8 @@ export class IpController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.ipService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateIpDto: UpdateIpDto) {
-    return this.ipService.update(+id, updateIpDto);
+  getUserIp(@Param('id') id: string) {
+    return this.ipService.getUserIp(+id);
   }
 
   @Delete(':id')

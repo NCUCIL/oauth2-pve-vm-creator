@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { CreateIpDto } from './dto/create-ip.dto';
 import { UpdateIpDto } from './dto/update-ip.dto';
 import { Ip } from './entities/ip.entity';
@@ -11,31 +11,28 @@ export class IpService {
   constructor(
     @InjectRepository(Ip)
     private ipRepository: Repository<Ip>,
+    private dataSource: DataSource,
   ){}
 
-  create(createIpDto: CreateIpDto) {
-    return 'This action adds a new ip';
-  }
+  // find vm is exist or not, if is not exist, allowcate ip to vm and return ip
+  async  allowcateUserIP(id: number) {
+    const ip = await this.dataSource
+    .getRepository(Ip)
+    .createQueryBuilder('ip')
+    .where('ip.vm_id = :id', { id })
+    .getOne();
 
-  findAll() {
-    return `This action returns all ip`;
-  }
+    if(ip) {
+      return ip;
 
-  async allowcateUserIP(id: number) {
-    const ip = await this.ipRepository.save(
-      this.ipRepository.create({
-        vm_id: id,
-        ip_address: `10.${id}.0.0`
-      }),
-    )
-    return ip;
-  }
-
-  update(id: number, updateIpDto: UpdateIpDto) {
-    return `This action updates a #${id} ip`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} ip`;
+    } else {
+      const ip = await this.ipRepository.save(
+        this.ipRepository.create({
+          vm_id: id,
+          ip_address: `10.${id/255}.${id%255}.0`
+        }),
+      )
+      return ip;
+    }
   }
 }

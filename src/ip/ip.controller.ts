@@ -7,23 +7,8 @@ import { UpdateIpDto } from './dto/update-ip.dto';
 export class IpController {
   constructor(private readonly ipService: IpService) {}
 
-  @Post()
-  create(@Body() createIpDto: CreateIpDto) {
-    return this.ipService.create(createIpDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.ipService.findAll();
-  }
-
   @Get(':id')
-  allowcateUserIp(@Param('id') id: string) {
+  allowcateUserIp(@Param('user_id') id: number) {
     return this.ipService.allowcateUserIP(+id);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.ipService.remove(+id);
   }
 }

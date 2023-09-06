@@ -8,7 +8,8 @@ import { User } from './user/entities/user.entity';
 import { UserModule } from './user/user.module';
 import { PassportModule } from '@nestjs/passport';
 import { IpModule } from './ip/ip.module';
-import { VmModule } from './vm/vm.module';
+import { VmController } from './vm/vm.controller';
+import { VmService } from './vm/vm.service';
 
 let envFilePath = '.env.development';
 console.log(`Running in ${process.env.ENVIROMENT}`)
@@ -36,8 +37,8 @@ if (process.env.ENVIROMENT='PRODUCTION'){
   }),
     UserModule,
     IpModule,
-    VmModule],
-  controllers: [AppController],
-  providers: [AppService],
+  ],
+  controllers: [AppController, VmController],
+  providers: [AppService, VmService],
 })
 export class AppModule {}

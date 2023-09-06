@@ -1,26 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateVmDto } from './dto/create-vm.dto';
-import { UpdateVmDto } from './dto/update-vm.dto';
+import { Vm } from './interfaces/vm.interface';
 
 @Injectable()
 export class VmService {
-  create(createVmDto: CreateVmDto) {
-    return 'This action adds a new vm';
-  }
 
-  findAll() {
-    return `This action returns all vm`;
-  }
+    private readonly vm: Vm[] = [];
 
-  findOne(id: number) {
-    return `This action returns a #${id} vm`;
-  }
-
-  update(id: number, updateVmDto: UpdateVmDto) {
-    return `This action updates a #${id} vm`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} vm`;
+  getUserUrl(): Vm[] {
+    return this.vm;
   }
 }

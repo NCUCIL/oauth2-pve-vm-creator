@@ -1,1 +1,3 @@
-export class CreateVmDto {}
+export class CreateVmDto{
+    Url : string;
+}

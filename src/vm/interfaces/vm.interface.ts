@@ -1,3 +1,3 @@
 export interface Vm {
-    url: string;
+  url: string;
 }

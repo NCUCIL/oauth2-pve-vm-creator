@@ -1,8 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import axios from 'axios';
-
+import { Injectable } from "@nestjs/common";
+import axios from "axios";
 
 @Injectable()
-export class AuthService {
-
-}
+export class AuthService {}

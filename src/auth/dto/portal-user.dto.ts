@@ -1,5 +1,5 @@
 export interface PortalUser {
-    identifier: string;
-    email: string;
-    studentId: string;
+  identifier: string;
+  email: string;
+  studentId: string;
 }
